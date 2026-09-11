@@ -1,0 +1,39 @@
+#Linux Prompt
+
+ubuntu@ip-10-0-0-31:~$
+
+Meaning
+ubuntu      → username
+@           → separator
+ip-10-0-0-31 → hostname of the server
+:~          → current directory (home directory)
+$           → normal user
+
+So:
+
+ubuntu@ip-10-0-0-31:~$
+
+means user ubuntu is logged into the server ip-10-0-0-31 and is currently in the home directory.
+
+If you become root
+
+When you run:
+
+sudo -i
+
+the prompt changes to something like:
+
+root@ip-10-0-0-31:~#
+
+Here:
+
+root → administrator user
+#    → root/administrator prompt
+Important interview point
+Prompt	Meaning
+ubuntu@ip-10-0-0-31:~$	Ubuntu normal user
+root@ip-10-0-0-31:~#	Root user
+ubuntu@ip-10-0-0-31:/var/www$	Ubuntu user inside /var/www
+
+$ = normal user
+# = root user
