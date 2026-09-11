@@ -1,0 +1,374 @@
+# Basic All Commands Of Linux
+
+1. Navigation Commands
+
+Command	| Use	                   | Example
+___________________________________________________
+pwd	    | Show current directory | pwd
+ls	    | List files	           | ls
+ls  -l	| Detailed list	         | ls -l
+ls  -a	| Show hidden files	     | ls -a
+cd	    | Change directory	     | cd /var/log
+cd ..	  | Go one directory back	 | cd ..
+cd ~	  | Go to home directory	 | cd ~
+clear	  | Clear terminal	       | clear
+___________________________________________________
+  
+2. File & Directory Commands
+
+Command	  | Use	                    | Example
+__________________________________________________________
+mkdir	    | Create directory	      | mkdir test
+rmdir	    | Remove empty directory	| rmdir test
+touch	    | Create file	            | touch file.txt
+cp	      | Copy file	              | cp a.txt b.txt
+cp -r	    | Copy directory	        | cp -r dir1 dir2
+mv	      | Move/rename	            | mv old.txt new.txt
+rm	      | Delete file	            | rm file.txt
+rm -r	    | Delete directory	      | rm -r test
+file	    | Check file type             | file test.txt
+stat	    | File details	          | stat file.txt
+___________________________________________________________
+
+Be careful with rm because deleted files normally don't go to a recycle bin.
+
+3. View File Contents
+> cat file.txt
+Shows complete file.
+
+> less file.txt
+View large file page by page.
+
+> head file.txt
+Shows first 10 lines.
+
+> tail file.txt
+Shows last 10 lines.
+
+> tail -f /var/log/syslog
+Continuously watches a log file.
+
+> nl file.txt
+Shows file with line numbers.
+
+4. Editing Files
+>nano file.txt
+  
+Common Nano shortcuts:
+Ctrl + O → Save
+Ctrl + X → Exit
+Ctrl + W → Search
+
+Another editor:
+
+vim file.txt
+  
+5. Search Commands
+find
+Find a file:
+> find /home -name file.txt
+> Find all .log files:
+> find /var/log -name "*.log"
+
+Find directories:
+> find /home -type d
+
+grep
+Search text inside a file:
+> grep "error" log.txt
+
+Case-insensitive:
+> grep -i "error" log.txt
+
+Show line numbers:
+> grep -n "error" log.txt
+
+Search recursively:
+> grep -r "error" /var/log
+
+6. Permissions
+
+Check permissions:
+> ls -l
+Example:
+-rwxr-xr--
+
+Change permission:
+> chmod 755 script.sh
+
+Change owner:
+> chown ubuntu file.txt
+
+Change owner and group:
+> chown ubuntu:ubuntu file.txt
+
+7. User Commands
+> whoami
+
+Shows current user.
+> id
+
+Shows user ID and group information.
+> who
+
+Shows logged-in users.
+> w
+
+Shows logged-in users and what they are doing.
+> sudo -i
+
+Switch to root.
+> su - username
+Switch user.
+
+8. Process Commands
+> ps
+Show current processes.
+
+> ps aux
+Show all running processes.
+
+> top
+Live process monitoring.
+
+> htop
+Interactive process monitoring, if installed.
+
+> kill PID
+Stop a process.
+
+Example:
+kill 1234
+
+Force kill:
+kill -9 1234
+
+9. System Information
+> uname -a
+Kernel/system information.
+
+> hostname
+Show hostname.
+
+> hostnamectl
+Detailed hostname/system information.
+
+> uptime
+How long system has been running.
+
+> date
+Show date and time.
+
+> free -h
+Memory/RAM usage.
+
+> df -h
+Disk space.
+
+> du -sh /folder
+Size of a folder.
+
+10. Networking Commands
+> ip addr
+Show IP addresses.
+
+> ip route
+Show routing table.
+
+>ping 8.8.8.8
+Check network connectivity.
+
+> ss -tuln
+Show listening ports.
+
+> curl https://example.com
+Make an HTTP request.
+
+> wget https://example.com/file.zip
+Download a file.
+
+> hostname -I
+Show IP address.
+
+11. Package Management — Ubuntu
+
+Update package information:
+> sudo apt update
+
+Install package:
+> sudo apt install nginx
+
+Remove package:
+> sudo apt remove nginx
+
+Upgrade packages:
+> sudo apt upgrade
+
+Search package:
+> apt search nginx
+
+12. Service Management
+
+Very important for AWS/DevOps:
+  
+> sudo systemctl start nginx
+Start service.
+
+> sudo systemctl stop nginx
+Stop service.
+
+> sudo systemctl restart nginx
+Restart service.
+
+> sudo systemctl status nginx
+Check service status.
+
+> sudo systemctl enable nginx
+Start automatically after boot.
+
+> sudo systemctl disable nginx
+Disable automatic startup.
+
+13. Archive Commands
+
+Create tar archive:
+> tar -cvf backup.tar files/
+
+View archive:
+> tar -tvf backup.tar
+
+Extract archive:
+> tar -xvf backup.tar
+
+Create gzip archive:
+> tar -czvf backup.tar.gz files/
+
+Extract:
+> tar -xzvf backup.tar.gz
+
+14. Sorting & Counting
+
+Sort:
+> sort file.txt
+
+Unique lines:
+> uniq file.txt
+
+Sort + unique:
+>sort file.txt | uniq
+
+Count lines:
+> wc -l file.txt
+
+Count words:
+> wc -w file.txt
+
+Count characters:
+> wc -c file.txt
+  
+15. Redirection & Pipes
+
+Output to file:
+> ls > output.txt
+
+Append:
+> ls >> output.txt
+
+Input:
+> command < file.txt
+
+Pipe:
+> ls | grep ".txt"
+
+Example:
+> ps aux | grep nginx
+
+The | sends the output of one command to another command.
+
+16. Environment Variables
+> env
+
+Show environment variables.
+> echo $PATH
+
+Show PATH.
+> echo $HOME
+
+Show home directory.
+> Set variable:
+
+NAME="Vishakha"
+Use it:
+> echo $NAME
+
+17. History & Help
+> history
+Show previous commands.
+
+>man ls
+Manual/help for ls.
+
+>ls --help
+Quick help.
+
+> which python
+Find location of a command.
+
+> which nginx
+
+18. Important / Directories
+/
+├── /home       → User home directories
+├── /root       → Root user's home
+├── /etc        → Configuration files
+├── /var        → Logs and variable data
+├── /tmp        → Temporary files
+├── /bin        → Essential commands
+├── /usr        → Applications and utilities
+├── /opt        → Optional software
+├── /dev        → Device files
+├── /proc       → Process/kernel information
+└── /boot       → Boot files
+⭐ Most important commands for interviews
+
+
+
+*** Focus on these first:
+
+pwd
+ls
+cd
+mkdir
+touch
+cp
+mv
+rm
+cat
+less
+head
+tail
+grep
+find
+sort
+uniq
+wc
+chmod
+chown
+ps
+top
+kill
+df
+du
+free
+ip
+ping
+ss
+curl
+wget
+tar
+systemctl
+journalctl
+apt
+sudo
+whoami
+id
